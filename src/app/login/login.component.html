@@ -1,0 +1,64 @@
+<h2 style="text-align: center; margin-top: 50px;">欢迎来到选课系统！</h2>
+<div class="row" style="margin-top: 50px;">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div *ngIf="showMessage != null">
+      <ngb-alert>
+        <strong>{{showMessage}}</strong>
+      </ngb-alert>
+    </div>
+    <ngb-tabset>
+      <ngb-tab title="学生登录">
+        <ng-template ngbTabContent>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">学号</span>
+            </div>
+            <input #studyNumber type="text" class="form-control" placeholder="请输入学号">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">密码</span>
+            </div>
+            <input #studentPassword type="password" class="form-control" placeholder="请输入密码">
+          </div>
+          <button class="btn btn-success" (click)="studentLogin(studyNumber.value, studentPassword.value)">登录</button>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="教师登录">
+        <ng-template ngbTabContent>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">教工号</span>
+            </div>
+            <input type="text" class="form-control" placeholder="请输入教工号">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">密码</span>
+            </div>
+            <input type="password" class="form-control" placeholder="请输入密码">
+          </div>
+          <button class="btn btn-success">登录</button>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="管理员登录">
+        <ng-template ngbTabContent>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">用户名</span>
+            </div>
+            <input type="text" class="form-control" placeholder="请输入管理员用户名">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">密码</span>
+            </div>
+            <input type="password" class="form-control" placeholder="请输入密码">
+          </div>
+          <button class="btn btn-success">登录</button>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>
