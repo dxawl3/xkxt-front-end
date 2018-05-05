@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../core/service/student.service';
-import {Student} from '../core/domain/student';
-import {AppGlobalField} from '../core/app-global-field';
+import {Student} from '../core/domain/entity/student';
+import {AppGlobalField} from '../core/config/app-global-field';
 import {Router} from '@angular/router';
 
 @Component({
