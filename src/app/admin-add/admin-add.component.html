@@ -1,0 +1,115 @@
+<app-header></app-header>
+<div class="row" style="margin-top: 200px;" *ngIf="dataReady">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div *ngIf="showMessage != null">
+      <ngb-alert>
+        <strong>{{showMessage}}</strong>
+      </ngb-alert>
+    </div>
+    <ngb-tabset>
+      <ngb-tab title="添加学生账户">
+        <ng-template ngbTabContent>
+          <div style="margin-top: 20px;"
+               (keyup.enter)="createStudent(studyNumber.value, studentName.value, studentProfession.value, classes.value, studentPassword.value)">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">学生学号</span>
+              </div>
+              <input #studyNumber type="text" class="form-control" placeholder="请输入学生学号">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">学生姓名</span>
+              </div>
+              <input #studentName type="text" class="form-control" placeholder="请输入学生姓名">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">所在专业</span>
+              </div>
+              <select #studentProfession class="custom-select">
+                <option selected>请选择学生所在专业</option>
+                <option *ngFor="let profession of professionListResponse.professions"
+                        value="{{profession.name}}">{{profession.name}}
+                </option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">所在班级</span>
+              </div>
+              <input #classes type="text" class="form-control" placeholder="请输入学生所在班级">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">初始密码</span>
+              </div>
+              <input #studentPassword type="password" class="form-control" placeholder="请输入学生账号初始密码">
+            </div>
+            <div class="row">
+              <button class="btn btn-success"
+                      (click)="createStudent(studyNumber.value, studentName.value, studentProfession.value, classes.value, studentPassword.value)"
+                      style="width: 60%; margin-left: 1rem;">保存
+              </button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-secondary" (click)="goBack()"
+                      style="width: 30%;">取消
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="添加教师账户">
+        <ng-template ngbTabContent>
+          <div style="margin-top: 20px;"
+               (keyup.enter)="createTeacher(teacherNumber.value, teacherName.value, teacherCollege.value, allowMax.value, teacherPassword.value)">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">教师工号</span>
+              </div>
+              <input #teacherNumber type="text" class="form-control" placeholder="请输入教师工号">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">教师姓名</span>
+              </div>
+              <input #teacherName type="text" class="form-control" placeholder="请输入教师姓名">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">所在学院</span>
+              </div>
+              <select #teacherCollege class="custom-select">
+                <option selected>请选择教师所在学院</option>
+                <option *ngFor="let college of collegeListResponse.colleges"
+                        value="{{college.name}}">{{college.name}}
+                </option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">课题上限</span>
+              </div>
+              <input #allowMax type="number" class="form-control" placeholder="请输入教师发布毕业设计课题上限">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">初始密码</span>
+              </div>
+              <input #teacherPassword type="password" class="form-control" placeholder="请输入教师账号初始密码">
+            </div>
+            <div class="row">
+              <button class="btn btn-success"
+                      (click)="createTeacher(teacherNumber.value, teacherName.value, teacherCollege.value, allowMax.value, teacherPassword.value)"
+                      style="width: 60%; margin-left: 1rem;">保存
+              </button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-secondary" (click)="goBack()"
+                      style="width: 30%;">取消
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

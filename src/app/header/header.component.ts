@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AppGlobalField} from '../core/config/app-global-field';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  currentLoginRole: string;
 
-  ngOnInit() {
+  constructor(private route: Router) {
   }
 
+  ngOnInit() {
+    this.getCurrentLoginRole();
+  }
+
+  getCurrentLoginRole(): void {
+    this.currentLoginRole = localStorage.getItem(AppGlobalField.currentLoginRole);
+  }
+
+  loginOut(): void {
+    localStorage.clear();
+    this.route.navigateByUrl('/');
+  }
 }

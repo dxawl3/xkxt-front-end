@@ -4,21 +4,19 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {StudentComponent} from './student/student.component';
 import {AdminComponent} from './admin/admin.component';
-import {AdminCreateStudentComponent} from './admin-create-student/admin-create-student.component';
-import {AdminCreateTeacherComponent} from './admin-create-teacher/admin-create-teacher.component';
 import {AdminPushMessageComponent} from './admin-push-message/admin-push-message.component';
 import {StudentSettingComponent} from './student-setting/student-setting.component';
 import {StudentPushLogComponent} from './student-push-log/student-push-log.component';
 import {TeacherComponent} from './teacher/teacher.component';
 import {TeacherCreateSubjectComponent} from './teacher-create-subject/teacher-create-subject.component';
 import {TeacherSettingComponent} from './teacher-setting/teacher-setting.component';
+import {AdminAddComponent} from './admin-add/admin-add.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'admin/create-student', component: AdminCreateStudentComponent},
-  {path: 'admin/create-teacher', component: AdminCreateTeacherComponent},
+  {path: 'admin/add', component: AdminAddComponent},
   {path: 'admin/push-message', component: AdminPushMessageComponent},
   {path: 'student', component: StudentComponent},
   {path: 'student/setting', component: StudentSettingComponent},

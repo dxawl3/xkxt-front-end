@@ -1,3 +1,108 @@
-<p>
-  admin works!
-</p>
+<app-header></app-header>
+<div class="row" style="margin-top: 100px;" *ngIf="dataReady">
+  <div *ngIf="showMessage != null">
+    <ngb-alert>
+      <strong>{{showMessage}}</strong>
+    </ngb-alert>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-2">
+    <div class="row">
+      <h5>管理员账户：</h5>admin
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="row" style="margin-left: 0px;">
+      <button class="btn btn-primary" (click)="goToAdd()">添加</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="goToPushMessage()">发布</button>
+    </div>
+    <ngb-tabset style="margin-top: 30px; margin-left: 1px;">
+      <ngb-tab title="学生">
+        <ng-template ngbTabContent>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">学号</th>
+              <th scope="col">姓名</th>
+              <th scope="col">专业</th>
+              <th scope="col">班级</th>
+              <th scope="col">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of studentListResponse.students; let i = index;">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{student.studyNumber}}</td>
+              <td>{{student.name}}</td>
+              <td>{{student.profession}}</td>
+              <td>{{student.classes}}</td>
+              <button class="btn btn-danger btn-sm" style="margin-top: 10px;"
+                      (click)="deleteStudent(student.studyNumber)">删除
+              </button>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="教师">
+        <ng-template ngbTabContent>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">教工号</th>
+              <th scope="col">姓名</th>
+              <th scope="col">学院</th>
+              <th scope="col">指导学生上限</th>
+              <th scope="col">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let teacher of teacherListResponse.teachers; let i = index;">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{teacher.teacherNumber}}</td>
+              <td>{{teacher.name}}</td>
+              <td>{{teacher.college}}</td>
+              <td>{{teacher.allowMax}}</td>
+              <button class="btn btn-danger btn-sm" style="margin-top: 10px;"
+                      (click)="deleteTeacher(teacher.teacherNumber)">删除
+              </button>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="课题">
+        <ng-template ngbTabContent>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">课题名称</th>
+              <th scope="col">发布教师</th>
+              <th scope="col">审核状态</th>
+              <th scope="col">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let subject of subjectListResponse.subjects; let i = index;">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{subject.name}}</td>
+              <td>{{subject.whoCreate}}</td>
+              <td *ngIf="subject.adminIsPass == true">通过</td>
+              <td *ngIf="subject.adminIsPass == false">已驳回</td>
+              <button class="btn btn-success btn-sm" style="margin-top: 10px;"
+                      (click)="passSubject(subject.name, 'true')">通过审核
+              </button>&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-danger btn-sm" style="margin-top: 10px;"
+                      (click)="passSubject(subject.name, 'false')">驳回
+              </button>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

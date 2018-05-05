@@ -17,10 +17,9 @@ import {StudentSettingComponent} from './student-setting/student-setting.compone
 import {TeacherSettingComponent} from './teacher-setting/teacher-setting.component';
 import {StudentPushLogComponent} from './student-push-log/student-push-log.component';
 import {TeacherCreateSubjectComponent} from './teacher-create-subject/teacher-create-subject.component';
-import {AdminCreateStudentComponent} from './admin-create-student/admin-create-student.component';
-import {AdminCreateTeacherComponent} from './admin-create-teacher/admin-create-teacher.component';
 import {AdminPushMessageComponent} from './admin-push-message/admin-push-message.component';
-import { TeacherService } from './core/service/teacher.service';
+import {TeacherService} from './core/service/teacher.service';
+import {AdminAddComponent} from './admin-add/admin-add.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +33,8 @@ import { TeacherService } from './core/service/teacher.service';
     TeacherSettingComponent,
     StudentPushLogComponent,
     TeacherCreateSubjectComponent,
-    AdminCreateStudentComponent,
-    AdminCreateTeacherComponent,
-    AdminPushMessageComponent
+    AdminPushMessageComponent,
+    AdminAddComponent
   ],
   imports: [
     BrowserModule,

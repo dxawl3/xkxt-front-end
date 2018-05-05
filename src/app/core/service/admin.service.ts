@@ -16,14 +16,14 @@ export class AdminService {
   constructor(private http: HttpClient) {
   }
 
-  login(adminUsername: string, password: string): void {
+  login(adminUsername: string, password: string): Observable<void> {
     const myHeaders = {
       headers: new HttpHeaders({})
     };
     const myParameters = new HttpParams()
       .append('adminUsername', adminUsername)
       .append('password', password);
-    this.http.post(AppBackEndUrl.adminLogin, myParameters, myHeaders);
+    return this.http.post<void>(AppBackEndUrl.adminLogin, myParameters, myHeaders);
   }
 
   createStudent(student: Student): Observable<Student> {
@@ -35,13 +35,13 @@ export class AdminService {
     return this.http.post<Student>(AppBackEndUrl.adminCreatStudent, student, myHeaders);
   }
 
-  deleteStudent(studyNumber: string): void {
+  deleteStudent(studyNumber: string): Observable<void> {
     const myHeaders = {
       headers: new HttpHeaders({})
     };
     const myParameters = new HttpParams()
       .append('studyNumber', studyNumber);
-    this.http.post(AppBackEndUrl.adminDeleteStudent, myParameters, myHeaders);
+    return this.http.post<void>(AppBackEndUrl.adminDeleteStudent, myParameters, myHeaders);
   }
 
   createTeacher(teacher: Teacher): Observable<Teacher> {
@@ -53,13 +53,13 @@ export class AdminService {
     return this.http.post<Teacher>(AppBackEndUrl.adminCreateTeacher, teacher, myHeaders);
   }
 
-  deleteTeacher(teacherNumber: string): void {
+  deleteTeacher(teacherNumber: string): Observable<void> {
     const myHeaders = {
       headers: new HttpHeaders({})
     };
     const myParameters = new HttpParams()
       .append('teacherNumber', teacherNumber);
-    this.http.post(AppBackEndUrl.adminDeleteTeacher, myParameters, myHeaders);
+    return this.http.post<void>(AppBackEndUrl.adminDeleteTeacher, myParameters, myHeaders);
   }
 
   pushMessage(message: Message): Observable<Message> {

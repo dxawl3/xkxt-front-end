@@ -6,4 +6,13 @@ export class Teacher extends BaseEntity {
   password: string;
   college: string;
   allowMax: number;
+
+  constructor(teacherNumber: string, name: string, college: string, allowMax: number, password: string) {
+    super();
+    this.teacherNumber = teacherNumber;
+    this.name = name;
+    this.password = password;
+    this.college = college;
+    this.allowMax = allowMax;
+  }
 }

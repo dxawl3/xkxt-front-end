@@ -30,7 +30,7 @@ export class TeacherService {
       .append('teacherNumber', teacherNumber)
       .append('oldPassword', oldPassword)
       .append('newPassword', newPassword);
-    return this.http.post<Teacher>(AppBackEndUrl.studentChangePassword, myParameters, myHeaders);
+    return this.http.post<Teacher>(AppBackEndUrl.teacherChangePassword, myParameters, myHeaders);
   }
 
   createSubject(subject: Subject): Observable<Subject> {
