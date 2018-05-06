@@ -1,3 +1,32 @@
-<p>
-  admin-push-message works!
-</p>
+<app-header></app-header>
+<h2 style="text-align: center; margin-top: 150px;">发布系统公告</h2>
+<div class="row" style="margin-top: 50px;">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div *ngIf="showMessage != null">
+      <ngb-alert>
+        <strong>{{showMessage}}</strong>
+      </ngb-alert>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">公告标题</span>
+      </div>
+      <input #noticeTitle type="text" class="form-control" placeholder="请输入公告的标题">
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">公告详情</span>
+      </div>
+      <textarea #noticeContent class="form-control" rows="10" placeholder="从这里输入公告的详情内容"></textarea>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+      <button class="btn btn-success" (click)="pushMessage(noticeTitle.value, noticeContent.value)"
+              style="width: 60%; margin-left: 1rem;">发布
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-secondary" (click)="goBack()"
+              style="width: 30%;">取消
+      </button>
+    </div>
+  </div>
+</div>
