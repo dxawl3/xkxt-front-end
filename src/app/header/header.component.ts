@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
     this.currentLoginRole = localStorage.getItem(AppGlobalField.currentLoginRole);
   }
 
+  setting(): void {
+    this.route.navigateByUrl('/' + this.currentLoginRole + '/setting');
+  }
+
   loginOut(): void {
     localStorage.clear();
     this.route.navigateByUrl('/');

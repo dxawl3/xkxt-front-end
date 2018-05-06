@@ -4,7 +4,9 @@
   <div ngbDropdown class="col d-inline-block text-right" *ngIf="currentLoginRole != null">
     <button class="btn btn-dark" id="dropdownBasic" ngbDropdownToggle>个人</button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic">
-      <button class="dropdown-item" *ngIf="currentLoginRole != null && currentLoginRole !== 'admin'">设置</button>
+      <button class="dropdown-item" *ngIf="currentLoginRole != null && currentLoginRole !== 'admin'"
+              (click)="setting()">设置
+      </button>
       <hr *ngIf="currentLoginRole != null && currentLoginRole !== 'admin'">
       <button class="dropdown-item" (click)="loginOut()">退出</button>
     </div>
