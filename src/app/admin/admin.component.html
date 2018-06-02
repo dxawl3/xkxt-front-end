@@ -92,6 +92,7 @@
               <td>{{subject.whoCreate}}</td>
               <td *ngIf="subject.adminIsPass == true">通过</td>
               <td *ngIf="subject.adminIsPass == false">已驳回</td>
+              <td *ngIf="subject.adminIsPass == null">待审核</td>
               <button class="btn btn-success btn-sm" style="margin-top: 10px;"
                       (click)="passSubject(subject.name, 'true')">通过审核
               </button>&nbsp;&nbsp;&nbsp;

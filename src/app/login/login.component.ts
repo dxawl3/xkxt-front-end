@@ -6,6 +6,9 @@ import {Router} from '@angular/router';
 import {AdminService} from '../core/service/admin.service';
 import {TeacherService} from '../core/service/teacher.service';
 import {Teacher} from '../core/domain/entity/teacher';
+import {SubjectListResponse} from '../core/domain/response/subject-list-response';
+import {CommonService} from '../core/service/common.service';
+import {MessageListResponse} from '../core/domain/response/message-list-response';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +18,24 @@ import {Teacher} from '../core/domain/entity/teacher';
 export class LoginComponent implements OnInit {
 
   showMessage: string;
+  dataReady: boolean;
 
+  messageListResponse: MessageListResponse;
   constructor(private route: Router,
               private adminService: AdminService,
               private studentService: StudentService,
-              private teacherService: TeacherService) {
+              private teacherService: TeacherService,
+              private commonService: CommonService) {
   }
 
   ngOnInit() {
+    this.initData();
+  }
+
+  initData() {
     this.goToAlreadyLogin();
+    this.getAllMessage();
+    setTimeout(() => this.dataReady = true, 500);
   }
 
   goToAlreadyLogin(): void {
@@ -82,5 +94,20 @@ export class LoginComponent implements OnInit {
     // 登录成功
     localStorage.setItem(AppGlobalField.currentLoginRole, AppGlobalField.adminRole);
     this.route.navigateByUrl('/admin');
+  }
+
+  getAllMessage() {
+    this.commonService.getAllMessage()
+      .subscribe(result => this.handleGetSubject(result));
+  }
+
+  private handleGetSubject(messageListResponse: MessageListResponse) {
+    if (messageListResponse.messages != null) {
+      this.messageListResponse = messageListResponse;
+    } else if (messageListResponse.error != null) {
+      this.showMessage = messageListResponse.message;
+    } else {
+      console.log(messageListResponse);
+    }
   }
 }

@@ -1,13 +1,33 @@
 <app-header></app-header>
-<h2 style="text-align: center; margin-top: 150px;">欢迎来到选课系统！</h2>
+
 <div class="row" style="margin-top: 50px;">
-  <div class="col-3"></div>
+  <div class="col-1"></div>
   <div class="col-6">
+    <table class="table" style="margin-top: 150px;">
+      <thead class="thead">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">公告标题</th>
+        <th scope="col">公告详情</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let message of messageListResponse.messages; let i = index;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{message.title}}</td>
+        <td>{{message.content}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-3">
     <div *ngIf="showMessage != null">
       <ngb-alert>
         <strong>{{showMessage}}</strong>
       </ngb-alert>
     </div>
+    <h2 style="text-align: center; margin-top: 150px;">欢迎来到选题系统！</h2>
     <ngb-tabset>
       <ngb-tab title="学生登录">
         <ng-template ngbTabContent>

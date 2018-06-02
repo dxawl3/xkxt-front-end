@@ -1,0 +1,24 @@
+<app-header></app-header>
+<br><br><br><br><br><br>
+<div class="row" style="margin-top: 50px;">
+  <div class="col-3"></div>
+  <div class="col-5">
+    <div *ngIf="showMessage != null">
+      <ngb-alert>
+        <strong>{{showMessage}}</strong>
+      </ngb-alert>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">输入成绩</span>
+      </div>
+      <input #score type="text" class="form-control" placeholder="请输入学生成绩">
+    </div>
+      <button class="btn btn-success" (click)="updateScore(getName(), score.value)"
+              style="width: 60%; margin-left: 1rem;">确定
+      </button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-secondary" (click)="goBack()"
+              style="width: 30%;">取消
+      </button>
+    </div>
+</div>

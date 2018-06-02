@@ -1,3 +1,69 @@
 <app-header></app-header>
 <br><br><br><br><br><br>
-<h1>Student Success</h1>
+<div class="container" *ngIf="dataReady">
+  <div class="row">
+    <div class="col-3">
+      <table class="table">
+        <tr>学生信息：</tr>
+        <tr>
+          <td>学号：</td>
+          <td>{{student.studyNumber}}</td>
+        </tr>
+        <tr>
+          <td>姓名：</td>
+          <td>{{student.name}}</td>
+        </tr>
+        <tr>
+          <td>专业：</td>
+          <td>{{student.profession}}</td>
+        </tr>
+        <tr>
+          <td>班级：</td>
+          <td>{{student.classes}}</td>
+        </tr>
+        <tr>
+          <td>题目：</td>
+          <td>{{student.selectedSubject}}</td>
+        </tr>
+        <tr>
+          <td>成绩：</td>
+          <td>{{student.score}}</td>
+        </tr>
+        <button class="btn-primary" *ngIf="student.score == null && student.selectedSubject != null && student.teacherIsAgree == true"
+          (click)="pushlog()">提交进度</button>
+        <button class="btn-primary" *ngIf="student.score == null && student.selectedSubject != null && student.teacherIsAgree == true"
+                (click)="getlog(student.name)">查看进度</button>
+      </table>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">课题名称</th>
+          <th scope="col">指导教师</th>
+          <th scope="col">课题详情</th>
+          <th scope="col">推荐专业</th>
+          <th scope="col">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subject of subjectListResponse.subjects; let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{subject.name}}</td>
+          <td>{{subject.whoCreate}}</td>
+          <td>{{subject.info}}</td>
+          <td>{{subject.profession}}</td>
+          <button class="btn btn-success btn-sm" style="margin-top: 10px;" *ngIf="student.selectedSubject == null"
+                  (click)="selectSubject(student.studyNumber, subject.name)">选择
+          </button>
+          <button class="btn btn-success btn-sm" style="margin-top: 10px;" *ngIf="student.selectedSubject != null && student.teacherIsAgree != true"
+                  (click)="changeSelectedSubject(student.studyNumber, student.selectedSubject, subject.name)">重新选择
+          </button>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

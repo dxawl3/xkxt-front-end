@@ -42,13 +42,13 @@ export class TeacherService {
     return this.http.post<Subject>(AppBackEndUrl.teacherCreateSubject, subject, myHeaders);
   }
 
-  deleteSubject(subjectName: string): void {
+  deleteSubject(subjectName: string): Observable<void> {
     const myHeaders = {
       headers: new HttpHeaders({})
     };
     const myParameters = new HttpParams()
       .append('subjectName', subjectName);
-    this.http.post(AppBackEndUrl.teacherDeleteSubject, myParameters, myHeaders);
+    return this.http.post<void>(AppBackEndUrl.teacherDeleteSubject, myParameters, myHeaders);
   }
 
   updateScore(subjectName: string, score: string): Observable<Subject> {
@@ -61,12 +61,12 @@ export class TeacherService {
     return this.http.post<Subject>(AppBackEndUrl.teacherUpdateScore, myParameters, myHeaders);
   }
 
-  getSubject(teacherNumber: string): Observable<SubjectListResponse> {
+  getSubject(teacherName: string): Observable<SubjectListResponse> {
     const myHeaders = {
       headers: new HttpHeaders({})
     };
     const myParameters = new HttpParams()
-      .append('teacherNumber', teacherNumber);
+      .append('teacherName', teacherName);
     return this.http.post<SubjectListResponse>(AppBackEndUrl.teacherGetSubject, myParameters, myHeaders);
   }
 

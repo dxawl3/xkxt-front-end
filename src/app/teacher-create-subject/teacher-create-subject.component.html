@@ -1,3 +1,47 @@
-<p>
-  teacher-create-subject works!
-</p>
+<app-header></app-header>
+<h2 style="text-align: center; margin-top: 150px;">添加新的课题</h2>
+<div class="row" style="margin-top: 50px;" *ngIf="dataReady">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div *ngIf="showMessage != null">
+      <ngb-alert>
+        <strong>{{showMessage}}</strong>
+      </ngb-alert>
+    </div>
+    <div style="margin-top: 20px;"
+         (keyup.enter)="createSubject(subjectName.value, subjectInfo.value, subjectProfession.value)">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">课题名称</span>
+        </div>
+        <input #subjectName type="text" class="form-control" placeholder="请输入课题名称">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">课题详情</span>
+        </div>
+        <input #subjectInfo type="text" class="form-control" placeholder="请输入课题详情">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">课题专业</span>
+        </div>
+        <select #subjectProfession class="custom-select">
+          <option selected>请选择课题专业</option>
+          <option *ngFor="let profession of professionListResponse.professions"
+                  value="{{profession.name}}">{{profession.name}}
+          </option>
+        </select>
+      </div>
+      <div class="row">
+        <button class="btn btn-success"
+                (click)="createSubject(subjectName.value, subjectInfo.value, subjectProfession.value)"
+                style="width: 60%; margin-left: 1rem;">保存
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-secondary" (click)="goBack()"
+                style="width: 30%;">取消
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

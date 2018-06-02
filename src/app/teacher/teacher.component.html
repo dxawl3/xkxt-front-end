@@ -1,3 +1,71 @@
 <app-header></app-header>
 <br><br><br><br><br><br>
-<h1>Teacher Success</h1>
+<div class="container" *ngIf="dataReady">
+  <div class="row">
+    <div class="col-3">
+      <table class="table">
+        <tr>教师信息：</tr>
+        <tr>
+          <td>教工号：</td>
+          <td>{{teacher.teacherNumber}}</td>
+        </tr>
+        <tr>
+          <td>姓名：</td>
+          <td>{{teacher.name}}</td>
+        </tr>
+        <tr>
+          <td>学院：</td>
+          <td>{{teacher.college}}</td>
+        </tr>
+        <tr>
+          <td>可指导学生数：</td>
+          <td>{{teacher.allowMax}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7">
+        <div>
+          <button class="btn btn-primary" (click)="goCreateSubject()">添加课题</button>
+        </div>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">课题名称</th>
+          <th scope="col">课题详情</th>
+          <th scope="col">所选学生</th>
+          <th scope="col">成绩</th>
+          <th scope="col">审核通过</th>
+          <th scope="col">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subject of subjectListResponse.subjects; let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{subject.name}}</td>
+          <td>{{subject.info}}</td>
+          <td>{{subject.selectBy}}</td>
+          <td>{{subject.score}}</td>
+          <td *ngIf="subject.adminIsPass == true">通过</td>
+          <td *ngIf="subject.adminIsPass == false">已驳回</td>
+          <td *ngIf="subject.adminIsPass == null">待审核</td>
+          <td>
+            <button class="btn btn-success btn-sm" *ngIf="subject.selectBy != null && subject.teacherIsAgree != true"
+                    (click)="agreeSelect(subject.name, 'true')">同意选题
+            </button>
+            <button class="btn btn-danger btn-sm" *ngIf="subject.teacherIsAgree != true"
+                    (click)="deleteSubject(subject.name)">删除
+            </button>
+            <button class="btn btn-success btn-sm" *ngIf="subject.teacherIsAgree == true"
+                    (click)="getlog(subject.selectBy)">查看进度
+            </button>
+            <button class="btn btn-success btn-sm" *ngIf="subject.teacherIsAgree == true"
+                    (click)="updateScore(subject.name)">成绩
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

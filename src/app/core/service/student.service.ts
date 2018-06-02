@@ -6,6 +6,7 @@ import {AppBackEndUrl} from '../config/app-back-end-url';
 import {Subject} from '../domain/entity/subject';
 import {SubjectListResponse} from '../domain/response/subject-list-response';
 import {StudentLogRequest} from '../domain/request/student-log-request';
+import {StudentLog} from '../domain/model/student-log';
 
 @Injectable()
 export class StudentService {
@@ -70,4 +71,12 @@ export class StudentService {
     };
     return this.http.post<Student>(AppBackEndUrl.studentPushLog, studentLogRequest, myHeaders);
   }
+
+  getLogs(name: string): Observable<StudentLog[]> {
+    const myHeaders = {
+      headers: new HttpHeaders({})
+    };
+    return this.http.get<StudentLog[]>(AppBackEndUrl.studentGetLogs + '?name=' + name, myHeaders);
+  }
+
 }

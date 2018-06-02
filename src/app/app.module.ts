@@ -20,6 +20,8 @@ import {TeacherCreateSubjectComponent} from './teacher-create-subject/teacher-cr
 import {AdminPushMessageComponent} from './admin-push-message/admin-push-message.component';
 import {TeacherService} from './core/service/teacher.service';
 import {AdminAddComponent} from './admin-add/admin-add.component';
+import { StudentLogComponent } from './student-log/student-log.component';
+import { TeacherUpdateScoreComponent } from './teacher-update-score/teacher-update-score.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {AdminAddComponent} from './admin-add/admin-add.component';
     StudentPushLogComponent,
     TeacherCreateSubjectComponent,
     AdminPushMessageComponent,
-    AdminAddComponent
+    AdminAddComponent,
+    StudentLogComponent,
+    TeacherUpdateScoreComponent
   ],
   imports: [
     BrowserModule,

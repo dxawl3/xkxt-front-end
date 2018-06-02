@@ -26,6 +26,7 @@ export class AppBackEndUrl {
   static studentChangeSelectedSubject = AppBackEndUrl.backEndHost + '/student/change_selected_subject';
   static studentGetSubject = AppBackEndUrl.backEndHost + '/student/get_subject';
   static studentPushLog = AppBackEndUrl.backEndHost + '/student/push_log';
+  static studentGetLogs = AppBackEndUrl.backEndHost + '/student/get_logs';
 
   // RESTful (/teacher/**)
   static teacherLogin = AppBackEndUrl.backEndHost + '/teacher/login';

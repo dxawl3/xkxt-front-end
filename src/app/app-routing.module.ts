@@ -11,6 +11,8 @@ import {TeacherComponent} from './teacher/teacher.component';
 import {TeacherCreateSubjectComponent} from './teacher-create-subject/teacher-create-subject.component';
 import {TeacherSettingComponent} from './teacher-setting/teacher-setting.component';
 import {AdminAddComponent} from './admin-add/admin-add.component';
+import {StudentLogComponent} from './student-log/student-log.component';
+import {TeacherUpdateScoreComponent} from './teacher-update-score/teacher-update-score.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path: 'student/push-log', component: StudentPushLogComponent},
   {path: 'teacher', component: TeacherComponent},
   {path: 'teacher/setting', component: TeacherSettingComponent},
-  {path: 'teacher/create-subject', component: TeacherCreateSubjectComponent}
+  {path: 'teacher/create-subject', component: TeacherCreateSubjectComponent},
+  {path: 'student-log/:id', component: StudentLogComponent},
+  {path: 'teacher/update-score/:id', component: TeacherUpdateScoreComponent}
 ];
 
 @NgModule({

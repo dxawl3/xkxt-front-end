@@ -1,0 +1,29 @@
+<app-header></app-header>
+<br><br><br><br><br><br>
+<div class="container" *ngIf="dataReady">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-7">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">进度标题</th>
+          <th scope="col">进度内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let studentLog of studentLogs; let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{studentLog.title}}</td>
+          <td>{{studentLog.content}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-secondary" (click)="goBack()"
+              style="width: 30%;">返回
+      </button>
+    </div>
+  </div>
+</div>
+
